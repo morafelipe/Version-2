@@ -1,17 +1,17 @@
 // src/components/Grid.jsx
-import Link from "next/link";      // ✅ El import va aquí arriba
+import Link from "next/link";
 import { products } from "@/data/Products";
 
 export default function ProductGrid({ list }) {
   return (
     <section className="max-w-7xl mx-auto px-6 md:px-4 mt-10 mb-20">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
-        {list.map((p, i) => (
+        {list.map((p) => (
           <div
-            key={i}
+            key={p.id}
             className="bg-white rounded-xl p-4 hover:shadow-md transition-shadow cursor-pointer"
           >
-            <Link href={`/product?title=${encodeURIComponent(p.title)}`}>
+            <Link href={`/product?id=${p.id}`}>
               <img
                 src={p.image}
                 alt={p.title}
@@ -30,4 +30,3 @@ export default function ProductGrid({ list }) {
     </section>
   );
 }
-

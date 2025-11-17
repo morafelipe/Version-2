@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { CartProvider } from "@/context/CartContext"; // ← IMPORTANTE
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,13 +24,14 @@ export default function RootLayout({ children }) {
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
-        ></link>
-
+        />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        {/* 🔥 AQUI ENREDAMOS TODO EN EL CART PROVIDER */}
+        <CartProvider>
+          {children}
+        </CartProvider>
       </body>
     </html>
   );
